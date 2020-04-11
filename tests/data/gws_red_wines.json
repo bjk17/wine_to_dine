@@ -1,0 +1,227 @@
+{
+  "count": 26496,
+  "next": "https://api.globalwinescore.com/globalwinescores/latest/?color=red&limit=10&offset=10&ordering=-score",
+  "previous": null,
+  "results": [
+    {
+      "wine": "Domaine De La Romanee Conti, Romanee Conti Grand Cru",
+      "wine_id": 55196,
+      "wine_slug": "domaine-de-la-romanee-conti-romanee-conti-grand-cru",
+      "appellation": "Romanee Conti Grand Cru",
+      "appellation_slug": "romanee-conti-grand-cru",
+      "color": "Red",
+      "wine_type": "",
+      "regions": [
+        "Bourgogne"
+      ],
+      "country": "France",
+      "classification": null,
+      "vintage": "2005",
+      "date": "2019-04-01",
+      "is_primeurs": false,
+      "score": 100,
+      "confidence_index": "A+",
+      "journalist_count": 4,
+      "lwin": 1028687,
+      "lwin_11": 10286872005
+    },
+    {
+      "wine": "Domaine De La Romanee Conti, Romanee Conti Grand Cru",
+      "wine_id": 55196,
+      "wine_slug": "domaine-de-la-romanee-conti-romanee-conti-grand-cru",
+      "appellation": "Romanee Conti Grand Cru",
+      "appellation_slug": "romanee-conti-grand-cru",
+      "color": "Red",
+      "wine_type": "",
+      "regions": [
+        "Bourgogne"
+      ],
+      "country": "France",
+      "classification": null,
+      "vintage": "2015",
+      "date": "2018-04-01",
+      "is_primeurs": false,
+      "score": 100,
+      "confidence_index": "A+",
+      "journalist_count": 6,
+      "lwin": 1028687,
+      "lwin_11": 10286872015
+    },
+    {
+      "wine": "Domaine De La Romanee Conti, Romanee Conti Grand Cru",
+      "wine_id": 55196,
+      "wine_slug": "domaine-de-la-romanee-conti-romanee-conti-grand-cru",
+      "appellation": "Romanee Conti Grand Cru",
+      "appellation_slug": "romanee-conti-grand-cru",
+      "color": "Red",
+      "wine_type": "",
+      "regions": [
+        "Bourgogne"
+      ],
+      "country": "France",
+      "classification": null,
+      "vintage": "1999",
+      "date": "2019-04-01",
+      "is_primeurs": false,
+      "score": 100,
+      "confidence_index": "A+",
+      "journalist_count": 3,
+      "lwin": 1028687,
+      "lwin_11": 10286871999
+    },
+    {
+      "wine": "Domaine De La Romanee Conti, La Tache Grand Cru",
+      "wine_id": 55194,
+      "wine_slug": "domaine-de-la-romanee-conti-la-tache-grand-cru",
+      "appellation": "La Tache Grand Cru",
+      "appellation_slug": "la-tache-grand-cru",
+      "color": "Red",
+      "wine_type": "",
+      "regions": [
+        "Bourgogne"
+      ],
+      "country": "France",
+      "classification": null,
+      "vintage": "1999",
+      "date": "2018-04-01",
+      "is_primeurs": false,
+      "score": 100,
+      "confidence_index": "B",
+      "journalist_count": 3,
+      "lwin": 1028704,
+      "lwin_11": 10287041999
+    },
+    {
+      "wine": "Domaine Georges & Christophe Roumier, Musigny Grand Cru",
+      "wine_id": 58801,
+      "wine_slug": "domaine-georges-christophe-roumier-musigny-grand-cru",
+      "appellation": "Musigny Grand Cru",
+      "appellation_slug": "musigny-grand-cru",
+      "color": "Red",
+      "wine_type": "",
+      "regions": [
+        "Bourgogne"
+      ],
+      "country": "France",
+      "classification": null,
+      "vintage": "2005",
+      "date": "2008-03-01",
+      "is_primeurs": false,
+      "score": 100,
+      "confidence_index": "A+",
+      "journalist_count": 4,
+      "lwin": 1056949,
+      "lwin_11": 10569492005
+    },
+    {
+      "wine": "Domaine Du Comte Liger Belair, Monopole, La Romanee Grand Cru",
+      "wine_id": 57229,
+      "wine_slug": "domaine-du-comte-liger-belair-monopole-la-romanee-grand-cru",
+      "appellation": "La Romanee Grand Cru",
+      "appellation_slug": "la-romanee-grand-cru",
+      "color": "Red",
+      "wine_type": "",
+      "regions": [
+        "Bourgogne"
+      ],
+      "country": "France",
+      "classification": null,
+      "vintage": "1911",
+      "date": "2015-11-01",
+      "is_primeurs": false,
+      "score": 100,
+      "confidence_index": "B+",
+      "journalist_count": 3,
+      "lwin": 1026579,
+      "lwin_11": 10265791911
+    },
+    {
+      "wine": "Chateau Lafite Rothschild, Pauillac",
+      "wine_id": 37901,
+      "wine_slug": "chateau-lafite-rothschild-pauillac",
+      "appellation": "Pauillac",
+      "appellation_slug": "pauillac",
+      "color": "Red",
+      "wine_type": "",
+      "regions": [
+        "Bordeaux"
+      ],
+      "country": "France",
+      "classification": "1er Grand Cru Classé en 1855",
+      "vintage": "1953",
+      "date": "2018-06-01",
+      "is_primeurs": false,
+      "score": 100,
+      "confidence_index": "B",
+      "journalist_count": 3,
+      "lwin": 1011872,
+      "lwin_11": 10118721953
+    },
+    {
+      "wine": "Masseto, Toscana",
+      "wine_id": 147403,
+      "wine_slug": "masseto-toscana",
+      "appellation": "Toscana",
+      "appellation_slug": "toscana",
+      "color": "Red",
+      "wine_type": "",
+      "regions": [
+        "Tuscany"
+      ],
+      "country": "Italy",
+      "classification": null,
+      "vintage": "2015",
+      "date": "2018-10-31",
+      "is_primeurs": false,
+      "score": 99.97,
+      "confidence_index": "A+",
+      "journalist_count": 3,
+      "lwin": 1160743,
+      "lwin_11": 11607432015
+    },
+    {
+      "wine": "Domaine De La Romanee Conti, Romanee Conti Grand Cru",
+      "wine_id": 55196,
+      "wine_slug": "domaine-de-la-romanee-conti-romanee-conti-grand-cru",
+      "appellation": "Romanee Conti Grand Cru",
+      "appellation_slug": "romanee-conti-grand-cru",
+      "color": "Red",
+      "wine_type": "",
+      "regions": [
+        "Bourgogne"
+      ],
+      "country": "France",
+      "classification": null,
+      "vintage": "2012",
+      "date": "2015-01-15",
+      "is_primeurs": false,
+      "score": 99.96,
+      "confidence_index": "A",
+      "journalist_count": 4,
+      "lwin": 1028687,
+      "lwin_11": 10286872012
+    },
+    {
+      "wine": "Domaine Leroy, Musigny Grand Cru",
+      "wine_id": 61613,
+      "wine_slug": "domaine-leroy-musigny-grand-cru",
+      "appellation": "Musigny Grand Cru",
+      "appellation_slug": "musigny-grand-cru",
+      "color": "Red",
+      "wine_type": "",
+      "regions": [
+        "Bourgogne"
+      ],
+      "country": "France",
+      "classification": null,
+      "vintage": "2010",
+      "date": "2018-03-29",
+      "is_primeurs": false,
+      "score": 99.86,
+      "confidence_index": "B+",
+      "journalist_count": 3,
+      "lwin": 1044197,
+      "lwin_11": 10441972010
+    }
+  ]
+}

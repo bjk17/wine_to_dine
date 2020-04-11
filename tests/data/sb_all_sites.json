@@ -1,0 +1,413 @@
+[
+  {
+    "OpeningHours": [
+      {
+        "IsOpen": true,
+        "Reason": null,
+        "Date": "2020-04-07T00:00:00",
+        "OpenFrom": "10:00:00",
+        "OpenTo": "19:00:00"
+      },
+      {
+        "IsOpen": true,
+        "Reason": null,
+        "Date": "2020-04-08T00:00:00",
+        "OpenFrom": "10:00:00",
+        "OpenTo": "19:00:00"
+      },
+      {
+        "IsOpen": true,
+        "Reason": null,
+        "Date": "2020-04-09T00:00:00",
+        "OpenFrom": "10:00:00",
+        "OpenTo": "19:00:00"
+      },
+      {
+        "IsOpen": false,
+        "Reason": "Långfredag",
+        "Date": "2020-04-10T00:00:00",
+        "OpenFrom": "00:00:00",
+        "OpenTo": "00:00:00"
+      },
+      {
+        "IsOpen": true,
+        "Reason": "Påskafton",
+        "Date": "2020-04-11T00:00:00",
+        "OpenFrom": "10:00:00",
+        "OpenTo": "15:00:00"
+      },
+      {
+        "IsOpen": false,
+        "Reason": "Påskdagen",
+        "Date": "2020-04-12T00:00:00",
+        "OpenFrom": "00:00:00",
+        "OpenTo": "00:00:00"
+      },
+      {
+        "IsOpen": false,
+        "Reason": "Annandag påsk",
+        "Date": "2020-04-13T00:00:00",
+        "OpenFrom": "00:00:00",
+        "OpenTo": "00:00:00"
+      },
+      {
+        "IsOpen": true,
+        "Reason": null,
+        "Date": "2020-04-14T00:00:00",
+        "OpenFrom": "10:00:00",
+        "OpenTo": "19:00:00"
+      },
+      {
+        "IsOpen": true,
+        "Reason": null,
+        "Date": "2020-04-15T00:00:00",
+        "OpenFrom": "10:00:00",
+        "OpenTo": "19:00:00"
+      },
+      {
+        "IsOpen": true,
+        "Reason": null,
+        "Date": "2020-04-16T00:00:00",
+        "OpenFrom": "10:00:00",
+        "OpenTo": "19:00:00"
+      },
+      {
+        "IsOpen": true,
+        "Reason": null,
+        "Date": "2020-04-17T00:00:00",
+        "OpenFrom": "10:00:00",
+        "OpenTo": "19:00:00"
+      },
+      {
+        "IsOpen": true,
+        "Reason": null,
+        "Date": "2020-04-18T00:00:00",
+        "OpenFrom": "10:00:00",
+        "OpenTo": "15:00:00"
+      },
+      {
+        "IsOpen": false,
+        "Reason": "-",
+        "Date": "2020-04-19T00:00:00",
+        "OpenFrom": "00:00:00",
+        "OpenTo": "00:00:00"
+      },
+      {
+        "IsOpen": true,
+        "Reason": null,
+        "Date": "2020-04-20T00:00:00",
+        "OpenFrom": "10:00:00",
+        "OpenTo": "19:00:00"
+      },
+      {
+        "IsOpen": true,
+        "Reason": null,
+        "Date": "2020-04-21T00:00:00",
+        "OpenFrom": "10:00:00",
+        "OpenTo": "19:00:00"
+      },
+      {
+        "IsOpen": true,
+        "Reason": null,
+        "Date": "2020-04-22T00:00:00",
+        "OpenFrom": "10:00:00",
+        "OpenTo": "19:00:00"
+      }
+    ],
+    "IsTastingStore": false,
+    "SiteId": "0170",
+    "Alias": "Globen",
+    "Address": "Arenavägen 57",
+    "DisplayName": null,
+    "PostalCode": "121 77",
+    "City": "Johanneshov",
+    "County": "Stockholms län",
+    "Country": null,
+    "IsStore": true,
+    "IsAgent": false,
+    "IsActiveForAgentOrder": false,
+    "Phone": "08-649 54 86",
+    "Email": null,
+    "Services": null,
+    "Depot": null,
+    "Name": "Globen",
+    "Position": {
+      "Long": 18.081204,
+      "Lat": 59.293241
+    }
+  },
+  {
+    "OpeningHours": [
+      {
+        "IsOpen": true,
+        "Reason": null,
+        "Date": "2020-04-07T00:00:00",
+        "OpenFrom": "10:00:00",
+        "OpenTo": "19:00:00"
+      },
+      {
+        "IsOpen": true,
+        "Reason": null,
+        "Date": "2020-04-08T00:00:00",
+        "OpenFrom": "10:00:00",
+        "OpenTo": "19:00:00"
+      },
+      {
+        "IsOpen": true,
+        "Reason": null,
+        "Date": "2020-04-09T00:00:00",
+        "OpenFrom": "10:00:00",
+        "OpenTo": "19:00:00"
+      },
+      {
+        "IsOpen": false,
+        "Reason": "Långfredag",
+        "Date": "2020-04-10T00:00:00",
+        "OpenFrom": "00:00:00",
+        "OpenTo": "00:00:00"
+      },
+      {
+        "IsOpen": true,
+        "Reason": "Påskafton",
+        "Date": "2020-04-11T00:00:00",
+        "OpenFrom": "10:00:00",
+        "OpenTo": "15:00:00"
+      },
+      {
+        "IsOpen": false,
+        "Reason": "Påskdagen",
+        "Date": "2020-04-12T00:00:00",
+        "OpenFrom": "00:00:00",
+        "OpenTo": "00:00:00"
+      },
+      {
+        "IsOpen": false,
+        "Reason": "Annandag påsk",
+        "Date": "2020-04-13T00:00:00",
+        "OpenFrom": "00:00:00",
+        "OpenTo": "00:00:00"
+      },
+      {
+        "IsOpen": true,
+        "Reason": null,
+        "Date": "2020-04-14T00:00:00",
+        "OpenFrom": "10:00:00",
+        "OpenTo": "19:00:00"
+      },
+      {
+        "IsOpen": true,
+        "Reason": null,
+        "Date": "2020-04-15T00:00:00",
+        "OpenFrom": "10:00:00",
+        "OpenTo": "19:00:00"
+      },
+      {
+        "IsOpen": true,
+        "Reason": null,
+        "Date": "2020-04-16T00:00:00",
+        "OpenFrom": "10:00:00",
+        "OpenTo": "19:00:00"
+      },
+      {
+        "IsOpen": true,
+        "Reason": null,
+        "Date": "2020-04-17T00:00:00",
+        "OpenFrom": "10:00:00",
+        "OpenTo": "19:00:00"
+      },
+      {
+        "IsOpen": true,
+        "Reason": null,
+        "Date": "2020-04-18T00:00:00",
+        "OpenFrom": "10:00:00",
+        "OpenTo": "15:00:00"
+      },
+      {
+        "IsOpen": false,
+        "Reason": "-",
+        "Date": "2020-04-19T00:00:00",
+        "OpenFrom": "00:00:00",
+        "OpenTo": "00:00:00"
+      },
+      {
+        "IsOpen": true,
+        "Reason": null,
+        "Date": "2020-04-20T00:00:00",
+        "OpenFrom": "10:00:00",
+        "OpenTo": "19:00:00"
+      },
+      {
+        "IsOpen": true,
+        "Reason": null,
+        "Date": "2020-04-21T00:00:00",
+        "OpenFrom": "10:00:00",
+        "OpenTo": "19:00:00"
+      },
+      {
+        "IsOpen": true,
+        "Reason": null,
+        "Date": "2020-04-22T00:00:00",
+        "OpenFrom": "10:00:00",
+        "OpenTo": "19:00:00"
+      }
+    ],
+    "IsTastingStore": false,
+    "SiteId": "0163",
+    "Alias": "Ringen",
+    "Address": "Götgatan 132",
+    "DisplayName": null,
+    "PostalCode": "118 62",
+    "City": "Stockholm",
+    "County": "Stockholms län",
+    "Country": null,
+    "IsStore": true,
+    "IsAgent": false,
+    "IsActiveForAgentOrder": false,
+    "Phone": "08-641 65 75",
+    "Email": null,
+    "Services": null,
+    "Depot": null,
+    "Name": "Ringen",
+    "Position": {
+      "Long": 18.074074,
+      "Lat": 59.307971
+    }
+  },
+  {
+    "OpeningHours": [
+      {
+        "IsOpen": true,
+        "Reason": null,
+        "Date": "2020-04-07T00:00:00",
+        "OpenFrom": "10:00:00",
+        "OpenTo": "19:00:00"
+      },
+      {
+        "IsOpen": true,
+        "Reason": null,
+        "Date": "2020-04-08T00:00:00",
+        "OpenFrom": "10:00:00",
+        "OpenTo": "19:00:00"
+      },
+      {
+        "IsOpen": true,
+        "Reason": null,
+        "Date": "2020-04-09T00:00:00",
+        "OpenFrom": "10:00:00",
+        "OpenTo": "19:00:00"
+      },
+      {
+        "IsOpen": false,
+        "Reason": "Långfredag",
+        "Date": "2020-04-10T00:00:00",
+        "OpenFrom": "00:00:00",
+        "OpenTo": "00:00:00"
+      },
+      {
+        "IsOpen": true,
+        "Reason": "Påskafton",
+        "Date": "2020-04-11T00:00:00",
+        "OpenFrom": "10:00:00",
+        "OpenTo": "15:00:00"
+      },
+      {
+        "IsOpen": false,
+        "Reason": "Påskdagen",
+        "Date": "2020-04-12T00:00:00",
+        "OpenFrom": "00:00:00",
+        "OpenTo": "00:00:00"
+      },
+      {
+        "IsOpen": false,
+        "Reason": "Annandag påsk",
+        "Date": "2020-04-13T00:00:00",
+        "OpenFrom": "00:00:00",
+        "OpenTo": "00:00:00"
+      },
+      {
+        "IsOpen": true,
+        "Reason": null,
+        "Date": "2020-04-14T00:00:00",
+        "OpenFrom": "10:00:00",
+        "OpenTo": "19:00:00"
+      },
+      {
+        "IsOpen": true,
+        "Reason": null,
+        "Date": "2020-04-15T00:00:00",
+        "OpenFrom": "10:00:00",
+        "OpenTo": "19:00:00"
+      },
+      {
+        "IsOpen": true,
+        "Reason": null,
+        "Date": "2020-04-16T00:00:00",
+        "OpenFrom": "10:00:00",
+        "OpenTo": "19:00:00"
+      },
+      {
+        "IsOpen": true,
+        "Reason": null,
+        "Date": "2020-04-17T00:00:00",
+        "OpenFrom": "10:00:00",
+        "OpenTo": "19:00:00"
+      },
+      {
+        "IsOpen": true,
+        "Reason": null,
+        "Date": "2020-04-18T00:00:00",
+        "OpenFrom": "10:00:00",
+        "OpenTo": "15:00:00"
+      },
+      {
+        "IsOpen": false,
+        "Reason": "-",
+        "Date": "2020-04-19T00:00:00",
+        "OpenFrom": "00:00:00",
+        "OpenTo": "00:00:00"
+      },
+      {
+        "IsOpen": true,
+        "Reason": null,
+        "Date": "2020-04-20T00:00:00",
+        "OpenFrom": "10:00:00",
+        "OpenTo": "19:00:00"
+      },
+      {
+        "IsOpen": true,
+        "Reason": null,
+        "Date": "2020-04-21T00:00:00",
+        "OpenFrom": "10:00:00",
+        "OpenTo": "19:00:00"
+      },
+      {
+        "IsOpen": true,
+        "Reason": null,
+        "Date": "2020-04-22T00:00:00",
+        "OpenFrom": "10:00:00",
+        "OpenTo": "19:00:00"
+      }
+    ],
+    "IsTastingStore": false,
+    "SiteId": "0168",
+    "Alias": null,
+    "Address": "Gullmarsplan 4-6",
+    "DisplayName": null,
+    "PostalCode": "121 40",
+    "City": "Johanneshov",
+    "County": "Stockholms län",
+    "Country": null,
+    "IsStore": true,
+    "IsAgent": false,
+    "IsActiveForAgentOrder": false,
+    "Phone": "08-91 24 55",
+    "Email": null,
+    "Services": null,
+    "Depot": null,
+    "Name": "Gullmarsplan",
+    "Position": {
+      "Long": 18.07906147712437,
+      "Lat": 59.29847251343973
+    }
+  }
+]
