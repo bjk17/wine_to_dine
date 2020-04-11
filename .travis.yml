@@ -1,0 +1,18 @@
+dist: xenial
+sudo: false
+
+language: python
+python:
+  - "3.6"
+  - "3.7"
+  - "3.8"
+
+install:
+  - pip install --upgrade pip
+  - pip install -r requirements.txt
+
+script:
+  - python -m unittest discover -s tests -t tests
+
+notifications:
+  email: false
