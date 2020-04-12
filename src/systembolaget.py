@@ -8,19 +8,6 @@ import requests
 
 logger = logging.getLogger("Systembolaget")
 
-COUNTRY_NAME_LANGUAGE_CONVERSION = {
-    'Argentina': 'Argentina',
-    'Australien': 'Australia',
-    'Chile': 'Chile',
-    'Folkrepubliken Kina': 'China',
-    'Frankrike': 'France',
-    'Italien': 'Italy',
-    'Nya Zeeland': 'New Zealand',
-    'Sydafrika': 'South Africa',
-    'Spanien': 'Spain',
-    'USA': 'Usa'
-}
-
 INVENTORY_FIELDS = [
     "ProductId", "ProductNumber", "ProductNameBold", "ProductNameThin",
     "Category", "ProductNumberShort", "ProducerName", "SupplierName",
@@ -35,6 +22,18 @@ INVENTORY_FIELDS = [
 
 
 class InventoryItem(namedtuple("InventoryItem", INVENTORY_FIELDS)):
+    COUNTRY_NAME_LANGUAGE_CONVERSION = {
+        'Argentina': 'Argentina',
+        'Australien': 'Australia',
+        'Chile': 'Chile',
+        'Folkrepubliken Kina': 'China',
+        'Frankrike': 'France',
+        'Italien': 'Italy',
+        'Nya Zeeland': 'New Zealand',
+        'Sydafrika': 'South Africa',
+        'Spanien': 'Spain',
+        'USA': 'Usa'
+    }
 
     def is_red_wine(self) -> bool:
         return self.Category == "Röda viner"
@@ -44,7 +43,7 @@ class InventoryItem(namedtuple("InventoryItem", INVENTORY_FIELDS)):
                f"{self.ProducerName}"
 
     def get_country(self) -> str:
-        return COUNTRY_NAME_LANGUAGE_CONVERSION.get(self.Country, 'Other')
+        return self.COUNTRY_NAME_LANGUAGE_CONVERSION.get(self.Country, 'Other')
 
     def get_url(self) -> str:
         return f"https://www.systembolaget.se/{self.ProductNumber}"

@@ -2,7 +2,7 @@ import unittest
 import json
 from pathlib import Path
 
-from src.globalwinescore import WineWithScore, GlobalWineScore
+from src.globalwinescore import Scoring, GlobalWineScore
 
 
 class TestWineWithScore(unittest.TestCase):
@@ -32,7 +32,7 @@ class TestWineWithScore(unittest.TestCase):
             "lwin_11": null
           }
         ''')
-        self.wine = WineWithScore(**self.chianti_classico_riserva)
+        self.wine = Scoring(**self.chianti_classico_riserva)
 
     def test_object_attributes(self) -> None:
         self.assertTrue(self.wine.is_red_wine())

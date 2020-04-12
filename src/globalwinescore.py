@@ -9,9 +9,6 @@ import requests
 
 logger = logging.getLogger("GlobalWineScores")
 
-COUNTRY_LIST = ('Argentina', 'Australia', 'Chile', 'China', 'France', 'Italy',
-                'New Zealand', 'Spain', 'South Africa', 'Usa')
-
 GWS_FIELDS = [
     "wine", "wine_id", "wine_slug", "appellation", "appellation_slug", "color",
     "wine_type", "regions", "country", "classification", "vintage", "date",
@@ -19,7 +16,9 @@ GWS_FIELDS = [
     "lwin_11"]
 
 
-class WineWithScore(namedtuple("WineWithScore", GWS_FIELDS)):
+class Scoring(namedtuple("Scoring", GWS_FIELDS)):
+    COUNTRY_LIST = ('Argentina', 'Australia', 'Chile', 'China', 'France',
+                    'Italy', 'New Zealand', 'Spain', 'South Africa', 'Usa')
 
     def is_red_wine(self) -> bool:
         return self.color == 'Red'
@@ -28,7 +27,7 @@ class WineWithScore(namedtuple("WineWithScore", GWS_FIELDS)):
         return f"{self.wine} {self.appellation}"
 
     def get_country(self) -> str:
-        return self.country if self.country in COUNTRY_LIST else 'Other'
+        return self.country if self.country in self.COUNTRY_LIST else 'Other'
 
     def get_url(self) -> str:
         return f"https://www.globalwinescore.com/wine-score/{self.wine_slug}" \
@@ -83,8 +82,8 @@ class GlobalWineScore:
         with open(self._red_wines_file, 'r') as file:
             return json.load(file)
 
-    def get_red_wines(self) -> List[WineWithScore]:
+    def get_red_wines(self) -> List[Scoring]:
         red_wines = self._load_red_wines()
         logger.info(f"Loaded top {len(red_wines['results'])} red wine "
                     f"scores out of {red_wines['count']} in database")
-        return [WineWithScore(**item) for item in red_wines['results']]
+        return [Scoring(**item) for item in red_wines['results']]
