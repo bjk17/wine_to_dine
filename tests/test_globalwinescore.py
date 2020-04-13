@@ -5,7 +5,7 @@ from pathlib import Path
 from src.globalwinescore import Scoring, GlobalWineScore
 
 
-class TestWineWithScore(unittest.TestCase):
+class TestScoring(unittest.TestCase):
 
     def setUp(self) -> None:
         self.chianti_classico_riserva = json.loads('''
@@ -18,7 +18,7 @@ class TestWineWithScore(unittest.TestCase):
             "color": "Red",
             "wine_type": "",
             "regions": [
-            "Tuscany"
+              "Tuscany"
             ],
             "country": "Italy",
             "classification": null,

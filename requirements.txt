@@ -1,1 +1,2 @@
 requests==2.23.0
+fuzzywuzzy[speedup]==0.18.0
