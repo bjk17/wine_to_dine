@@ -2,7 +2,7 @@ import unittest
 import json
 from pathlib import Path
 
-from src.systembolaget import InventoryItem, Systembolaget
+from src.systembolaget import InventoryItem, SystembolagetAPI
 
 
 class TestInventoryItem(unittest.TestCase):
@@ -42,7 +42,7 @@ class TestInventoryItem(unittest.TestCase):
             "AssortmentText": "Fast sortiment",
             "BeverageDescriptionShort": "Rött vin, Fruktigt & Smakrikt",
             "Usage": "Serveras vid cirka 18°C till rätter av mörkt kött.",
-            "Taste": "Nyanserad, mycket fruktig smak med rostad fatkaraktär, inslag av svarta vinbär, plommon, choklad, blåbär, mynta, kaffe och vanilj.",
+            "Taste": "Nyanserad, mycket fruktig smak med rostad fatkaraktär..",
             "Assortment": "FS",
             "RecycleFee": 0.0,
             "IsManufacturingCountry": false,
@@ -63,21 +63,61 @@ class TestSystembolaget(unittest.TestCase):
 
     def setUp(self) -> None:
         _data_dir = Path(__file__).resolve().parent / 'data'
-        self.systembolaget = Systembolaget('api_token')
+        self.stores = ('Globen', 'Ringen', 'Gullmarsplan')
+        self.systembolaget = SystembolagetAPI('api_token')
+        self.systembolaget._all_sites_file = _data_dir / 'sb_all_sites.json'
         self.systembolaget._inventory_file = _data_dir / 'sb_inventory.json'
-        self.systembolaget._red_wines_file = _data_dir / 'sb_red_wines.json'
-
-    def tearDown(self) -> None:
-        try:
-            # New in Python 3.8: The missing_ok=True parameter
-            self.systembolaget._red_wines_file.unlink()
-        except FileNotFoundError:
-            pass
 
     def test_get_inventory(self) -> None:
-        inventory = self.systembolaget.get_inventory()
+        inventory = list(self.systembolaget.get_inventory())
         self.assertEqual(2, len(inventory))
 
     def test_get_red_wines(self) -> None:
-        red_wines = self.systembolaget.get_red_wines()
+        red_wines = list(self.systembolaget.get_red_wines())
         self.assertEqual(1, len(red_wines))
+
+    def test_get_sites(self) -> None:
+        sites = list(self.systembolaget.get_sites())
+        self.assertEqual(3, len(sites))
+
+
+class TestParsingOpeningHours(unittest.TestCase):
+
+    def test_open(self) -> None:
+        opening_hours = json.loads('''
+          {
+            "IsOpen": true,
+            "Reason": null,
+            "Date": "2020-06-08T00:00:00",
+            "OpenFrom": "10:00:00",
+            "OpenTo": "19:00:00"
+          }
+        ''')
+        self.assertEqual("Open from 10:00 until 19:00",
+                         SystembolagetAPI.parse_opening_hours(opening_hours))
+
+    def test_closed(self) -> None:
+        opening_hours = json.loads('''
+          {
+            "IsOpen": false,
+            "Reason": "-",
+            "Date": "2020-06-07T00:00:00",
+            "OpenFrom": "00:00:00",
+            "OpenTo": "00:00:00"
+          }
+        ''')
+        self.assertEqual("Closed",
+                         SystembolagetAPI.parse_opening_hours(opening_hours))
+
+    def test_closed_with_reason(self) -> None:
+        opening_hours = json.loads('''
+          {
+            "IsOpen": false,
+            "Reason": "Nationaldagen",
+            "Date": "2020-06-06T00:00:00",
+            "OpenFrom": "00:00:00",
+            "OpenTo": "00:00:00"
+          }
+        ''')
+        self.assertEqual("Closed because of 'Nationaldagen'",
+                         SystembolagetAPI.parse_opening_hours(opening_hours))

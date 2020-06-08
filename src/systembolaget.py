@@ -2,7 +2,7 @@ import json
 import logging
 from collections import namedtuple
 from pathlib import Path
-from typing import List
+from typing import Iterator, List
 
 import requests
 
@@ -46,7 +46,7 @@ class InventoryItem(namedtuple("InventoryItem", INVENTORY_FIELDS)):
         return self.COUNTRY_NAME_LANGUAGE_CONVERSION.get(self.Country, 'Other')
 
     def get_url(self) -> str:
-        return f"https://www.systembolaget.se/{self.ProductNumber}"
+        return f"https://www.systembolaget.se/{self.ProductNumberShort}"
 
     def __str__(self) -> str:
         return f"{self.Vintage} {self.ProductNameBold}, {self.ProductNameThin}"
@@ -55,61 +55,97 @@ class InventoryItem(namedtuple("InventoryItem", INVENTORY_FIELDS)):
         return self.__str__()
 
 
-class Systembolaget:
+class SystembolagetAPI:
+    _api_url = 'https://api-extern.systembolaget.se/'
 
     def __init__(self, api_token: str):
-        self._api_url = 'https://api-extern.systembolaget.se/'
         self._headers = {'Ocp-Apim-Subscription-Key': api_token}
         self._cache_dir = Path(__file__).resolve().parent.parent / 'cache'
         self._cache_dir.mkdir(exist_ok=True)
+        self._all_sites_file = self._cache_dir / 'systembolaget_all_sites.json'
         self._inventory_file = self._cache_dir / 'systembolaget_inventory.json'
-        self._red_wines_file = self._cache_dir / 'systembolaget_red_wines.json'
+        self._products_with_stores_file = \
+            self._cache_dir / 'systembolaget_products_with_store.json'
 
     def clear_cache(self) -> None:
-        logger.debug(f"Deleting cache files from '{self._cache_dir}'")
-        for cache_file in (self._inventory_file, self._red_wines_file):
-            try:
-                # New in Python 3.8: The missing_ok=True parameter
-                cache_file.unlink()
-            except FileNotFoundError:
-                pass
+        logger.info(f"Deleting cache files from '{self._cache_dir}'")
+        self._all_sites_file.unlink(missing_ok=True)
+        self._inventory_file.unlink(missing_ok=True)
+        self._products_with_stores_file.unlink(missing_ok=True)
+
+    def _download_all_sites(self) -> None:
+        api_url = self._api_url + 'site/v1/site'
+        logger.info(f"Downloading info on sites from '{api_url}'")
+        with requests.get(api_url, headers=self._headers) as response:
+            response.raise_for_status()
+            with self._all_sites_file.open('w') as file:
+                json.dump(response.json(), file, indent=2, ensure_ascii=False)
+
+    def _load_all_sites(self) -> List[dict]:
+        if not self._all_sites_file.is_file():
+            self._download_all_sites()
+        with self._all_sites_file.open('r') as file:
+            all_sites = json.load(file)
+        logger.info(f"Loaded {len(all_sites)} site info items")
+        return all_sites
+
+    def get_sites(self) -> Iterator[dict]:
+        yield from self._load_all_sites()
+
+    def _download_products_with_store(self) -> None:
+        api_url = self._api_url + 'product/v1/product/getproductswithstore'
+        logger.info(f"Downloading product-store availability from '{api_url}'")
+        with requests.get(api_url, headers=self._headers) as response:
+            response.raise_for_status()
+            with self._products_with_stores_file.open('w') as file:
+                json.dump(response.json(), file, indent=2, ensure_ascii=False)
+
+    def _load_products_with_store(self) -> List[dict]:
+        if not self._products_with_stores_file.is_file():
+            self._download_products_with_store()
+        with self._products_with_stores_file.open('r') as file:
+            products_with_store = json.load(file)
+        logger.info(f"Loaded {len(products_with_store)} product-store items")
+        return products_with_store
+
+    def get_products_with_store(self) -> Iterator[dict]:
+        yield from self._load_products_with_store()
 
     def _download_inventory(self) -> None:
-        product_api_url = self._api_url + 'product/v1/product/'
-        logger.debug(f"Downloading inventory from '{product_api_url}'")
-
-        with requests.get(product_api_url, headers=self._headers) as response:
-            with open(self._inventory_file, 'w') as file:
+        api_url = self._api_url + 'product/v1/product/'
+        logger.info(f"Downloading inventory from '{api_url}'")
+        with requests.get(api_url, headers=self._headers) as response:
+            response.raise_for_status()
+            with self._inventory_file.open('w') as file:
                 json.dump(response.json(), file, indent=2, ensure_ascii=False)
 
     def _load_inventory(self) -> List[dict]:
         if not self._inventory_file.is_file():
             self._download_inventory()
-
-        with open(self._inventory_file, 'r') as file:
-            return json.load(file)
-
-    def get_inventory(self) -> List[InventoryItem]:
-        inventory = [InventoryItem(**item) for item in self._load_inventory()]
-        logger.info(f"{len(inventory)} items in inventory")
+        with self._inventory_file.open('r') as file:
+            inventory = json.load(file)
+        logger.info(f"Loaded {len(inventory)} inventory items")
         return inventory
 
-    def _generate_red_wines(self) -> None:
-        red_wines = list(filter(
-            lambda item: item['Category'] == 'Röda viner' and not item[
-                'IsCompletelyOutOfStock'], self._load_inventory()))
+    def get_inventory(self, stock_required=False) -> Iterator[InventoryItem]:
+        for item in self._load_inventory():
+            if not stock_required or not item['IsCompletelyOutOfStock']:
+                yield InventoryItem(**item)
 
-        with open(self._red_wines_file, 'w') as file:
-            json.dump(red_wines, file, indent=2, ensure_ascii=False)
+    def get_red_wines(self, stock_required=False) -> Iterator[InventoryItem]:
+        for inventory_item in self.get_inventory(stock_required):
+            if inventory_item.is_red_wine():
+                yield inventory_item
 
-    def _load_red_wines(self) -> List[dict]:
-        if not self._red_wines_file.is_file():
-            self._generate_red_wines()
+    @staticmethod
+    def parse_opening_hours(opening_hours: dict) -> str:
+        if opening_hours['IsOpen']:
+            return "Open from {} until {}".format(
+                opening_hours['OpenFrom'][:5],
+                opening_hours['OpenTo'][:5]
+            )
 
-        with open(self._red_wines_file, 'r') as file:
-            return json.load(file)
+        if opening_hours['Reason'] and opening_hours['Reason'] != '-':
+            return f"Closed because of '{opening_hours['Reason']}'"
 
-    def get_red_wines(self) -> List[InventoryItem]:
-        red_wines = self._load_red_wines()
-        logger.info(f"Loaded {len(red_wines)} red wines from inventory")
-        return [InventoryItem(**item) for item in red_wines]
+        return "Closed"

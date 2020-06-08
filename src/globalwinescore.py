@@ -54,12 +54,8 @@ class GlobalWineScore:
         self._red_wines_file = self._cache_dir / 'gws_red_wines.json'
 
     def clear_cache(self) -> None:
-        logger.debug(f"Deleting cache files from '{self._cache_dir}'")
-        try:
-            # New in Python 3.8: The missing_ok=True parameter
-            self._red_wines_file.unlink()
-        except FileNotFoundError:
-            pass
+        logger.info(f"Deleting cache files from '{self._cache_dir}'")
+        self._red_wines_file.unlink(missing_ok=True)
 
     def _download_red_wines(self) -> None:
         # As of mid April 2020 there are around 26.5k red wines in the database
@@ -69,17 +65,17 @@ class GlobalWineScore:
             'ordering': '-score'
         })
         red_wine_api_url = self._api_url + f'?{params}'
-        logger.debug(f"Downloading red wine scores from '{red_wine_api_url}'")
+        logger.info(f"Downloading red wine scores from '{red_wine_api_url}'")
 
         with requests.get(red_wine_api_url, headers=self._headers) as response:
-            with open(self._red_wines_file, 'w') as file:
+            with self._red_wines_file.open('w') as file:
                 json.dump(response.json(), file, indent=2, ensure_ascii=False)
 
     def _load_red_wines(self) -> dict:
         if not self._red_wines_file.is_file():
             self._download_red_wines()
 
-        with open(self._red_wines_file, 'r') as file:
+        with self._red_wines_file.open('r') as file:
             return json.load(file)
 
     def get_red_wines(self) -> List[Scoring]:

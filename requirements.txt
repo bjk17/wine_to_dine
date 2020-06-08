@@ -1,2 +1,4 @@
-requests==2.23.0
 fuzzywuzzy[speedup]==0.18.0
+geopy==1.22.0
+python-telegram-bot==12.7
+requests==2.23.0
